@@ -4,14 +4,15 @@ body {
 }
 
 .navigation ul {
-  list-style-type: none;
+  text-align: center;
 }
 
 .navigation li {
   font-weight: 100;
   letter-spacing: 2px;
   padding: 20px;
-  float: left;
+  display: inline-block;
+
 }
 
 #banner {
@@ -20,7 +21,7 @@ body {
   background-position: top center;
   height: 700px;
   width: 100%;
-  clear: both
+
 }
 
 #banner .content h1 {
@@ -44,4 +45,29 @@ h1 {
   color: DarkGrey;
   font-size: 14px;
   font-weight: 200;
+}
+
+.share {
+  border: 30px solid LightGrey;
+  padding: 140px 0px;
+  position: relative;
+  text-align: center;
+  width: 60%;
+}
+
+.share a {
+  background: green;
+  border: 1px solid red;
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  margin: 10px;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.share a:hover {
+  background: white;
+  border: 1px solid red;
+  color: red;
 }
