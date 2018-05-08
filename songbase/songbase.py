@@ -1,11 +1,36 @@
-from flask import Flask, render_template
+import os
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
+
+# setup SQLAlchemy
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+db = SQLAlchemy(app)
+
+
+# define database tables
+class Artist(db.Model):
+    __tablename__ = 'artists'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    about = db.Column(db.Text)
 
 
 @app.route('/')
 def index():
     # return "hello harry wang hahahah"
     return render_template('index.html')
+
+
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+    if request.method == "GET":
+        # return "hello GET"
+        return render_template('form.html')
+    if request.method == "POST":
+        first_name = request.form["first_name"]
+        return render_template('form.html', first_name=first_name)
 
 
 @app.route('/users/<string:username>')
